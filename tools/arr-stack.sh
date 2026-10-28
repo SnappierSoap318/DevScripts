@@ -280,7 +280,7 @@ _gen_password() {
 }
 
 pick_qbittorrent_password() {
-  [[ " $SELECTED_CLIENTS " == *" qbittorrent "* ]] || return
+  [[ " $SELECTED_CLIENTS " == *" qbittorrent "* ]] || return 0
   [[ -n "$var_qbt_password" ]] && { msg_info "qBittorrent password (from env) will be used."; return; }
 
   local choice
@@ -334,6 +334,7 @@ compute_ordered_slugs() {
   for s in $SELECTED_ARRS; do
     [[ "$s" == "seerr" ]] && ORDERED_SLUGS+=("seerr")
   done
+  return 0
 }
 
 pick_ip_mode_and_ips() {
